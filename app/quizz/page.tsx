@@ -2,19 +2,11 @@
 
 import theme from "@/constants/Theme";
 import { Label } from "@/components/ui/label";
-import Link from "next/link";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { type ThemeProviderProps } from "next-themes/dist/types";
+import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
+import CornerUpLeftIcon from "@/components/icons/cornerUpLeftIcon";
+import Link from "next/link";
 
 export default function Quizz() {
   return (
@@ -24,41 +16,97 @@ export default function Quizz() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        justifyContent: "space-between",
+        width: "100%",
+        height: "100vh",
         gap: theme.margin.m,
         overflow: "auto",
+        padding: theme.padding.xl,
       }}
     >
-      <Label style={{ fontSize: theme.fonts.large, marginTop: theme.margin.l }}>
-        Quizz
-      </Label>
-      <Link href="/words">
-        <Button variant="link">Check the words list</Button>
-      </Link>
-      <Card
-        className="card"
+      <div
+        className="container-header"
         style={{
-          width: "10%",
-          height: "10%",
-          minWidth: "300px",
-          minHeight: "100px",
+          display: "flex",
+          marginTop: theme.margin.l,
+          width: "100%",
+        }}
+      >
+        <div style={{ display: "flex", flex: 1, justifyContent: "flex-start" }}>
+          <Link href="/words">
+            <CornerUpLeftIcon />
+          </Link>
+        </div>
+        <div style={{ display: "flex", justifyContent: "center", flex: 2 }}>
+          <Label style={{ fontSize: theme.fonts.large }}>Learn english</Label>
+        </div>
+        <div style={{ display: "flex", flex: 1, justifyContent: "flex-end" }}>
+          <Label style={{ fontSize: theme.fonts.large }}>4 🏅</Label>
+        </div>
+      </div>
+
+      <div
+        className="container-translate"
+        style={{
+          width: "100%",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: "center",
-          gap: theme.margin.m,
-          padding: theme.padding.xl,
         }}
       >
-        <Label style={{ fontSize: theme.fonts.regular }}>Translate :</Label>
         <Label
-          style={{ fontSize: theme.fonts.regular, marginTop: theme.margin.l }}
+          style={{
+            color: theme.colors.slate,
+            fontWeight: "400",
+          }}
         >
-          🇫🇷 Faire un pari sportif
+          Translate the world :
         </Label>
-        <Input type="text" placeholder="Word in english" />
-        <Alert variant="destructive">Mauvaise traduction</Alert>
-        <Button>Submit</Button>
-      </Card>
+        <Label
+          className="label-word-to-translate mt-5"
+          style={{ fontSize: theme.fonts.large }}
+        >
+          Faire un pari sportif 🇫🇷
+        </Label>
+      </div>
+      <Input className="input-response" placeholder="Your response"></Input>
+
+      <div
+        className="result"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <label style={{ fontWeight: "600" }}>Correct 👍🏼</label>
+        <label style={{ color: theme.colors.slate }}>
+          Faire un pari sportif ce dit :
+        </label>
+        <label>Place a sports bet 🎲</label>
+      </div>
+
+      <Button className="button-confirm">Confirm</Button>
+
+      <div
+        className="container-progress"
+        style={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Progress value={50} className="w-[90%]" />
+        <Label
+          className="text-counter-question"
+          style={{
+            fontSize: theme.fonts.regular,
+            marginTop: theme.margin.l,
+          }}
+        >
+          7/10
+        </Label>
+      </div>
     </div>
   );
 }

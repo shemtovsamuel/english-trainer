@@ -14,8 +14,8 @@ const theme = {
     purple: "#7c3aee",
   },
   fonts: {
-    large: "24px",
-    regular: "16px",
+    large: "18px",
+    regular: "14px",
     small: "12px",
   },
   breakpoints: {
@@ -27,6 +27,7 @@ const theme = {
     s: "4px",
     m: "8px",
     l: "18px",
+    xl: "24px",
   },
   padding: {
     s: "4px",
