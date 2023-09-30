@@ -28,12 +28,12 @@ export default function Home() {
         Hello from HomePage 👋🏻
       </Label>
       <Label
-        style={{ color: theme.colors.secondary, fontSize: theme.fonts.regular }}
+        style={{ color: theme.colors.slate, fontSize: theme.fonts.regular }}
       >
         This is <b>Samuel Shemtov</b>'s template
       </Label>
-      <Link href="/page1">
-        <Button variant="link">Page 1</Button>
+      <Link href="/words">
+        <Button variant="link">words</Button>
       </Link>
 
       <span style={{ fontSize: "40px" }}>{count}</span>

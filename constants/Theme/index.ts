@@ -1,11 +1,17 @@
 const theme = {
   colors: {
-    primary: "#0070f3",
-    secondary: "#6c757d",
-    background: "#f8f9fa",
-    text: "#333",
-    textLight: "#888",
-    border: "#e2e2e2",
+    zinc: "#18181b",
+    slate: "#64748b",
+    stone: "#78716d",
+    gray: "#6b7281",
+    neutral: "#737373",
+    red: "##dd2627",
+    pink: "#e11d48",
+    orange: "#f97317",
+    green: "##2ca44a",
+    blue: "#2463ec",
+    yellow: "#facc15",
+    purple: "#7c3aee",
   },
   fonts: {
     large: "24px",
@@ -16,6 +22,17 @@ const theme = {
     mobile: "480px",
     tablet: "768px",
     desktop: "1024px",
+  },
+  margin: {
+    s: "4px",
+    m: "8px",
+    l: "18px",
+  },
+  padding: {
+    s: "4px",
+    m: "8px",
+    l: "18px",
+    xl: "24px",
   },
 };
 
