@@ -31,7 +31,7 @@ export default function Quizz() {
       handleResponse();
       setIsConfirm(true);
       // it it's correct
-      if (response === wordAnswer) {
+      if (wordAnswer.toLowerCase().includes(response.toLowerCase())) {
         setIsCorrect(true);
         dispatch(incrementGameScore());
       }
