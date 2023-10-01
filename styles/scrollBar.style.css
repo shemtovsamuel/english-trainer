@@ -1,0 +1,28 @@
+/* .container-card::-webkit-scrollbar {
+  width: 2.5px;
+}
+
+.container-card::-webkit-scrollbar-thumb {
+  background-color: #64748b;
+  border-left: 5px solid transparent;
+  border-radius: 10px;
+}
+
+.container-card::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.container-card {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+} */
+
+/* delete the scroll bar */
+
+.container-card::-webkit-scrollbar {
+  display: none;
+}
+
+.container-card {
+  scrollbar-width: none;
+}

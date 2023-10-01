@@ -3,11 +3,11 @@
 import theme from "@/constants/Theme";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { TabsList, TabsTrigger, Tabs } from "@/components/ui/tabs";
 import CardWords from "@/components/words/cardWords";
 import { useState } from "react";
+import "@/styles/scrollBar.style.css";
 
 export default function Words() {
   const words = [
