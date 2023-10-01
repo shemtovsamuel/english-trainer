@@ -33,7 +33,7 @@ export default function Words() {
 
         gap: theme.margin.m,
         overflow: "auto",
-        height: "100vh",
+        height: "100%",
       }}
     >
       <div
