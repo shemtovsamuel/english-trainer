@@ -14,6 +14,7 @@ import { RootState } from "@/Redux/store";
 import {
   incrementGameScore,
   addWordToAskedWordsList,
+  addWordToIncorrectWordsList,
 } from "@/Redux/Features/counter/counterSlice";
 import wordsData from "@/constants/WordsList";
 
@@ -22,9 +23,11 @@ export default function Quizz() {
   const askedWordsList = useSelector(
     (state: RootState) => state.counter.askedWordsList
   );
+  const incorrectWordsList = useSelector(
+    (state: RootState) => state.counter.incorrectWordsList
+  );
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
-  const [score, setScore] = useState(5);
   const [isConfirm, setIsConfirm] = useState(false);
   const [isCorrect, setIsCorrect] = useState(true);
   const [response, setResponse] = useState("");
@@ -33,7 +36,6 @@ export default function Quizz() {
 
   const handleConfirm = () => {
     if (response) {
-      handleResponse();
       setIsConfirm(true);
       // it it's correct
       if (wordAnswer.toLowerCase().includes(response.toLowerCase())) {
@@ -42,6 +44,11 @@ export default function Quizz() {
       }
       // if it's incorrect
       else {
+        const incorrectWord = {
+          frenchWord: wordToTranslate,
+          englishWord: wordAnswer,
+        };
+        dispatch(addWordToIncorrectWordsList(incorrectWord));
         setIsCorrect(false);
       }
     }
@@ -60,10 +67,6 @@ export default function Quizz() {
     setResponse(e.target.value);
   };
 
-  const handleResponse = () => {
-    console.log("User's response:", response);
-  };
-
   const handleGenerateWord = () => {
     const unaskedWords = wordsData.filter(
       (word) => !askedWordsList.includes(word.frenchWord)
@@ -79,8 +82,9 @@ export default function Quizz() {
 
     setWordToTranslate(randomWord.frenchWord);
     setWordAnswer(randomWord.englishWord);
-    dispatch(addWordToAskedWordsList(randomWord.frenchWord));
+    dispatch(addWordToAskedWordsList(randomWord));
     console.log("🏅Asked words list:", askedWordsList);
+    console.log("🏅Incorrect words list:", incorrectWordsList);
   };
 
   useEffect(() => {

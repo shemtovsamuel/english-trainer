@@ -7,6 +7,7 @@ export interface CounterState {
   gameScore: number;
   bestScore: number;
   askedWordsList: string[];
+  incorrectWordsList: string[];
 }
 
 const initialState: CounterState = {
@@ -14,6 +15,7 @@ const initialState: CounterState = {
   gameScore: 0,
   bestScore: 0,
   askedWordsList: [],
+  incorrectWordsList: [],
 };
 
 export const counterSlice = createSlice({
@@ -47,6 +49,12 @@ export const counterSlice = createSlice({
     resetAskedWordsList: (state) => {
       state.askedWordsList = [];
     },
+    addWordToIncorrectWordsList: (state, action) => {
+      state.incorrectWordsList.push(action.payload);
+    },
+    resetIncorrectWordsList: (state) => {
+      state.incorrectWordsList = [];
+    },
   },
 });
 
@@ -60,6 +68,8 @@ export const {
   setGameScore,
   addWordToAskedWordsList,
   resetAskedWordsList,
+  addWordToIncorrectWordsList,
+  resetIncorrectWordsList,
 } = counterSlice.actions;
 
 export default counterSlice.reducer;
