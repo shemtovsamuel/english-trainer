@@ -25,7 +25,7 @@ const ButtonsResult: React.FC<ButtonsResultProps> = ({ resetScore }) => {
           Retry
         </Button>
       </Link>
-      <Link href="/words">
+      <Link href="/">
         <Button className="button-retry mt-5" variant={"secondary"}>
           review words
         </Button>

@@ -34,7 +34,7 @@ const HeaderQuizz: React.FC<HeaderQuizzProps> = ({ style, score }) => {
       }}
     >
       <div style={{ display: "flex", flex: 1, justifyContent: "flex-start" }}>
-        <Link href="/words">
+        <Link href="/">
           <CornerUpLeftIcon onClick={handleGoBack} />
         </Link>
       </div>
