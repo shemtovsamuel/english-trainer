@@ -1,13 +1,14 @@
 "use client";
 
 import { createSlice } from "@reduxjs/toolkit";
+import { Word } from "@/enums/word";
 
 export interface CounterState {
   value: number;
   gameScore: number;
   bestScore: number;
   askedWordsList: string[];
-  incorrectWordsList: string[];
+  incorrectWordsList: Word[];
 }
 
 const initialState: CounterState = {
