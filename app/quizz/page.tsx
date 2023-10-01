@@ -9,9 +9,14 @@ import HeaderQuizz from "@/components/quizz/headerQuizz";
 import QuestionQuizz from "@/components/quizz/questionQuizz";
 import ResponseQuizz from "@/components/quizz/responseQuizz";
 import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/Redux/store";
+import { incrementGameScore } from "@/Redux/Features/counter/counterSlice";
 
 export default function Quizz() {
-  const [page, setPage] = useState(0);
+  const gameScore = useSelector((state: RootState) => state.counter.gameScore);
+  const dispatch = useDispatch();
+  const [page, setPage] = useState(1);
   const [score, setScore] = useState(5);
   const [isConfirm, setIsConfirm] = useState(false);
   const [isCorrect, setIsCorrect] = useState(true);
@@ -27,7 +32,7 @@ export default function Quizz() {
       setIsConfirm(true);
       // it it's correct
       setIsCorrect(true);
-      setScore(score + 1);
+      dispatch(incrementGameScore());
       // if it's incorrect
       // setIsCorrect(false);
     }
@@ -64,7 +69,7 @@ export default function Quizz() {
         padding: theme.padding.xl,
       }}
     >
-      <HeaderQuizz score={score} />
+      <HeaderQuizz score={gameScore} />
       <QuestionQuizz wordToTranslate={wordToTranslate} />
       <Input
         className="input-response max-w-xl"

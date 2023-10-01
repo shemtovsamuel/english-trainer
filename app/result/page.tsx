@@ -5,13 +5,20 @@ import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import ScoreResult from "@/components/result/scoreResult";
 import ButtonsResult from "@/components/result/buttonsResult";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/Redux/store";
+import {
+  resetGameScore,
+  setBestScore,
+} from "@/Redux/Features/counter/counterSlice";
 
 export default function Result() {
-  const [score, setScore] = useState(5);
-  const [bestScore, setBestScore] = useState(7);
+  const dispatch = useDispatch();
+  const gameScore = useSelector((state: RootState) => state.counter.gameScore);
+  const bestScore = useSelector((state: RootState) => state.counter.bestScore);
 
-  if (score > bestScore) {
-    setBestScore(score);
+  if (gameScore > bestScore) {
+    dispatch(setBestScore(gameScore));
   }
 
   return (
@@ -32,8 +39,8 @@ export default function Result() {
       <Label style={{ fontSize: theme.fonts.large, marginTop: theme.margin.l }}>
         Learn english
       </Label>
-      <ScoreResult score={score} bestScore={bestScore} />
-      <ButtonsResult />
+      <ScoreResult score={gameScore} bestScore={bestScore} />
+      <ButtonsResult resetScore={dispatch(resetGameScore)} />
     </div>
   );
 }

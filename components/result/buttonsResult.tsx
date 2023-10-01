@@ -6,7 +6,11 @@ import theme from "@/constants/Theme";
 import Link from "next/link";
 import { Button } from "../ui/button";
 
-const ButtonsResult: React.FC = () => {
+interface ButtonsResultProps {
+  resetScore: () => void;
+}
+
+const ButtonsResult: React.FC<ButtonsResultProps> = ({ resetScore }) => {
   return (
     <div
       className="container-buttons"
@@ -17,7 +21,9 @@ const ButtonsResult: React.FC = () => {
       }}
     >
       <Link href="/quizz">
-        <Button className="button-retry">Retry</Button>
+        <Button className="button-retry" onClick={resetScore}>
+          Retry
+        </Button>
       </Link>
       <Link href="/words">
         <Button className="button-retry mt-5" variant={"secondary"}>
