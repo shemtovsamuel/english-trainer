@@ -108,37 +108,51 @@ export default function Quizz() {
     >
       <HeaderQuizz score={gameScore} />
       <QuestionQuizz wordToTranslate={wordToTranslate} />
-      <Input
-        className="input-response max-w-xl"
-        placeholder="Your response"
-        value={response}
-        onChange={handleInputChange}
-      />
+      <div
+        className="container-input"
+        style={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: theme.margin.l,
+        }}
+      >
+        <Input
+          className="input-response max-w-xl"
+          placeholder="Your response"
+          value={response}
+          onChange={handleInputChange}
+        />
+
+        <div className="button-confirm">
+          {isConfirm ? (
+            page === 10 ? (
+              <Link href="/result">
+                <Button className="button-result">Result</Button>
+              </Link>
+            ) : (
+              <Button className="button-confirm" onClick={handleNext}>
+                Next
+              </Button>
+            )
+          ) : (
+            <Button
+              className="button-next"
+              onClick={handleConfirm}
+              disabled={!response}
+            >
+              Confirm
+            </Button>
+          )}
+        </div>
+      </div>
       <ResponseQuizz
         isCorrect={isCorrect}
         wordToTranslate={wordToTranslate}
         wordAnswer={wordAnswer}
         isDisplay={isConfirm}
       />
-      {isConfirm ? (
-        page === 10 ? (
-          <Link href="/result">
-            <Button className="button-result">Result</Button>
-          </Link>
-        ) : (
-          <Button className="button-confirm" onClick={handleNext}>
-            Next
-          </Button>
-        )
-      ) : (
-        <Button
-          className="button-next"
-          onClick={handleConfirm}
-          disabled={!response}
-        >
-          Confirm
-        </Button>
-      )}
 
       <ProgressQuizz value={page} />
     </div>
