@@ -6,12 +6,12 @@ import theme from "@/constants/Theme";
 
 interface QuestionQuizzProps {
   style?: React.CSSProperties;
-  worldToTranslate: string;
+  wordToTranslate: string;
 }
 
 const QuestionQuizz: React.FC<QuestionQuizzProps> = ({
   style,
-  worldToTranslate,
+  wordToTranslate,
 }) => {
   return (
     <div
@@ -36,7 +36,7 @@ const QuestionQuizz: React.FC<QuestionQuizzProps> = ({
         className="label-word-to-translate mt-5"
         style={{ fontSize: theme.fonts.large }}
       >
-        {worldToTranslate} 🇫🇷
+        {wordToTranslate} 🇫🇷
       </Label>
     </div>
   );

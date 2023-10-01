@@ -9,6 +9,7 @@ interface ResponseQuizzProps {
   isCorrect: boolean;
   wordToTranslate: string;
   wordAnswer: string;
+  isDisplay?: boolean;
 }
 
 const ResponseQuizz: React.FC<ResponseQuizzProps> = ({
@@ -16,6 +17,7 @@ const ResponseQuizz: React.FC<ResponseQuizzProps> = ({
   isCorrect,
   wordToTranslate,
   wordAnswer,
+  isDisplay = true,
 }) => {
   return (
     <div
@@ -23,6 +25,8 @@ const ResponseQuizz: React.FC<ResponseQuizzProps> = ({
       style={{
         display: "flex",
         flexDirection: "column",
+        opacity: isDisplay ? 1 : 0,
+        transition: "opacity 0.3s",
       }}
     >
       {isCorrect ? (

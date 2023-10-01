@@ -4,17 +4,50 @@ import theme from "@/constants/Theme";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import ProgressQuizz from "@/components/quizz/progressQuizz";
-import { useState } from "react";
+import { SetStateAction, use, useEffect, useState } from "react";
 import HeaderQuizz from "@/components/quizz/headerQuizz";
 import QuestionQuizz from "@/components/quizz/questionQuizz";
 import ResponseQuizz from "@/components/quizz/responseQuizz";
+import Link from "next/link";
 
 export default function Quizz() {
-  const [page, setPage] = useState(7);
+  const [page, setPage] = useState(0);
   const [score, setScore] = useState(5);
-  const [response, setResponse] = useState("");
-  const [isValidate, setIsValidate] = useState(false);
+  const [isConfirm, setIsConfirm] = useState(false);
   const [isCorrect, setIsCorrect] = useState(true);
+  const [response, setResponse] = useState("");
+  const [wordToTranslate, setWordToTranslate] = useState(
+    "Faire un pari sportif"
+  );
+  const [wordAnswer, setWordAnswer] = useState("Place a sports bet 🎲");
+
+  const handleConfirm = () => {
+    if (response) {
+      handleResponse();
+      setIsConfirm(true);
+      // it it's correct
+      setIsCorrect(true);
+      setScore(score + 1);
+      // if it's incorrect
+      // setIsCorrect(false);
+    }
+  };
+
+  const handleNext = () => {
+    setIsConfirm(false);
+    setPage(page + 1);
+    setResponse("");
+  };
+
+  const handleInputChange = (e: {
+    target: { value: SetStateAction<string> };
+  }) => {
+    setResponse(e.target.value);
+  };
+
+  const handleResponse = () => {
+    console.log("User's response:", response);
+  };
 
   return (
     <div
@@ -32,14 +65,39 @@ export default function Quizz() {
       }}
     >
       <HeaderQuizz score={score} />
-      <QuestionQuizz worldToTranslate="Faire un pari sportif" />
-      <Input className="input-response" placeholder="Your response"></Input>
+      <QuestionQuizz wordToTranslate={wordToTranslate} />
+      <Input
+        className="input-response"
+        placeholder="Your response"
+        value={response}
+        onChange={handleInputChange}
+      />
       <ResponseQuizz
         isCorrect={isCorrect}
-        wordToTranslate="Faire un pari sportif"
-        wordAnswer="Place a sports bet 🎲"
+        wordToTranslate={wordToTranslate}
+        wordAnswer={wordAnswer}
+        isDisplay={isConfirm}
       />
-      <Button className="button-confirm">Confirm</Button>
+      {isConfirm ? (
+        page === 10 ? (
+          <Link href="/result">
+            <Button className="button-result">Result</Button>
+          </Link>
+        ) : (
+          <Button className="button-confirm" onClick={handleNext}>
+            Next
+          </Button>
+        )
+      ) : (
+        <Button
+          className="button-next"
+          onClick={handleConfirm}
+          disabled={!response}
+        >
+          Confirm
+        </Button>
+      )}
+
       <ProgressQuizz value={page} />
     </div>
   );
