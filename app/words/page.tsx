@@ -6,8 +6,54 @@ import Link from "next/link";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { TabsList, TabsTrigger, Tabs } from "@/components/ui/tabs";
+import CardWords from "@/components/words/cardWords";
+import { useState } from "react";
 
 export default function Words() {
+  const words = [
+    {
+      frenchWord: "Faire un pari sportif",
+      englishWord: "Place a sports bet 🎲",
+    },
+    {
+      frenchWord: "Déborder",
+      englishWord: "Overflow",
+    },
+    {
+      frenchWord: "Casserole",
+      englishWord: "Saucepan / Pot 🍳",
+    },
+    {
+      frenchWord: "Passoire",
+      englishWord: "Strainer / Colander 🍝",
+    },
+    {
+      frenchWord: "Souffler",
+      englishWord: "Blow 💨",
+    },
+    {
+      frenchWord: "C'est du vol ",
+      englishWord: "It's a rip-off / It's theft 💰",
+    },
+    {
+      frenchWord: "Voisin",
+      englishWord: "Neighbor 👋",
+    },
+    {
+      frenchWord: "Je suis en train de me préparer",
+      englishWord: "I am getting ready 💅",
+    },
+  ];
+  const [filterOnEnglish, setFilterOnEnglish] = useState(true);
+
+  const handleFilter = (tabValue: string) => {
+    if (tabValue === "english") {
+      setFilterOnEnglish(true);
+    } else if (tabValue === "french") {
+      setFilterOnEnglish(false);
+    }
+  };
+
   return (
     <div
       className="container-card"
@@ -38,30 +84,32 @@ export default function Words() {
 
         <Tabs className="tab-french-english mt-5" defaultValue="english">
           <TabsList>
-            <TabsTrigger value="english">Anglais 🇬🇧</TabsTrigger>
-            <TabsTrigger value="french">Français 🇫🇷</TabsTrigger>
+            <TabsTrigger
+              value="english"
+              onClick={() => handleFilter("english")}
+            >
+              Anglais 🇬🇧
+            </TabsTrigger>
+            <TabsTrigger value="french" onClick={() => handleFilter("french")}>
+              Français 🇫🇷
+            </TabsTrigger>
           </TabsList>
         </Tabs>
       </div>
       <div className="container-card" style={{ overflow: "auto" }}>
-        <Card
-          className="card"
-          style={{
-            width: "10%",
-            height: "10%",
-            minWidth: "300px",
-            minHeight: "100px",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: theme.margin.m,
-            padding: theme.padding.xl,
-          }}
-        >
-          <label>🇬🇧 Place a sports bet 🎲</label>
-          <label>🇫🇷 Faire un pari sportif</label>
-        </Card>
+        {words.map((word) =>
+          filterOnEnglish ? (
+            <CardWords
+              wordToTranslate={word.frenchWord}
+              wordTranslated={word.englishWord}
+            />
+          ) : (
+            <CardWords
+              wordToTranslate={word.englishWord}
+              wordTranslated={word.frenchWord}
+            />
+          )
+        )}
       </div>
       <Link href="/quizz">
         <Button className="button-start mb-10">Start the test</Button>

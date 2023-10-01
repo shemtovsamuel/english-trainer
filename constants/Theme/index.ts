@@ -17,6 +17,13 @@ const theme = {
     large: "18px",
     regular: "14px",
     small: "12px",
+    xxl: "48px",
+  },
+  weight: {
+    small: "200",
+    regular: "400",
+    large: "600",
+    xxl: "800",
   },
   breakpoints: {
     mobile: "480px",
