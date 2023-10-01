@@ -96,7 +96,15 @@ export default function Words() {
           </TabsList>
         </Tabs>
       </div>
-      <div className="container-card" style={{ overflow: "auto" }}>
+      <div
+        className="container-card"
+        style={{
+          overflow: "auto",
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+        }}
+      >
         {words.map((word) =>
           filterOnEnglish ? (
             <CardWords

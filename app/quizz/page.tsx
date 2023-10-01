@@ -67,7 +67,7 @@ export default function Quizz() {
       <HeaderQuizz score={score} />
       <QuestionQuizz wordToTranslate={wordToTranslate} />
       <Input
-        className="input-response"
+        className="input-response max-w-xl"
         placeholder="Your response"
         value={response}
         onChange={handleInputChange}

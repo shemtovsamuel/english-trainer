@@ -22,7 +22,7 @@ const ProgressQuizz: React.FC<ProgressQuizzProps> = ({ style, value }) => {
         ...style,
       }}
     >
-      <Progress value={value * 10} className="w-[90%]" />
+      <Progress value={value * 10} className="w-[90%] max-w-xl" />
       <Label
         className="text-counter-question"
         style={{
