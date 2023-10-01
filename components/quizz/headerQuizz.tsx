@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import {
   resetAskedWordsList,
   resetGameScore,
+  resetIncorrectWordsList,
 } from "@/Redux/Features/counter/counterSlice";
 
 interface HeaderQuizzProps {
@@ -19,6 +20,7 @@ const HeaderQuizz: React.FC<HeaderQuizzProps> = ({ style, score }) => {
   const handleGoBack = () => {
     dispatch(resetGameScore());
     dispatch(resetAskedWordsList());
+    dispatch(resetIncorrectWordsList());
   };
 
   return (
