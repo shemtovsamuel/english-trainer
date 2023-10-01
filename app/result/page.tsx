@@ -33,13 +33,6 @@ export default function Result() {
     if (storedBestScore > bestScore) {
       dispatch(setBestScore(storedBestScore));
     }
-
-    const storedGameScore = parseInt(
-      localStorage.getItem("gameScore") || "0",
-      10
-    );
-
-    dispatch(setGameScore(storedGameScore));
   }, []);
 
   useEffect(() => {
@@ -47,7 +40,6 @@ export default function Result() {
       dispatch(setBestScore(gameScore));
       localStorage.setItem("bestScore", gameScore.toString());
     }
-    localStorage.setItem("gameScore", gameScore.toString());
   }, [gameScore]);
 
   const handleGameReset = () => {
@@ -56,9 +48,11 @@ export default function Result() {
     dispatch(resetIncorrectWordsList());
   };
 
+  console.log("gameScore 🇫🇷 : ", gameScore);
+
   return (
     <div
-      className="container-card"
+      className="container"
       style={{
         display: "flex",
         flexDirection: "column",
@@ -74,53 +68,36 @@ export default function Result() {
       <Label style={{ fontSize: theme.fonts.large, marginTop: theme.margin.l }}>
         Learn english
       </Label>
-      {/* <ScoreResult score={gameScore} bestScore={bestScore} style={{}} /> */}
       <div
         style={{
-          // Prend tout l'espace disponible
           flex: 1,
           marginTop: "10vh",
           display: "flex",
           flexDirection: "column",
-          // justifyContent: "center", // Centre le contenu verticalement
-          width: "100%",
         }}
       >
         <ScoreResult score={gameScore} bestScore={bestScore} />
       </div>
-      <div
-        className="container-card"
-        style={{
-          overflow: "auto",
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-        }}
-      >
-        {incorrectWordsList.length > 0 ? (
-          <div
-            className="container-card"
-            style={{
-              overflow: "auto",
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "center",
-            }}
-          >
-            {incorrectWordsList.map((word, index) => (
-              <CardWords
-                key={index} // Ajout d'une clé pour chaque élément de la liste
-                wordToTranslate={word.frenchWord}
-                wordTranslated={word.englishWord}
-              />
-            ))}
-          </div>
-        ) : null}
-      </div>
 
-      {/* <div
-        style={{ backgroundColor: "red", width: "100%", height: "20vh" }}
-      ></div> */}
+      {incorrectWordsList.length > 0 ? (
+        <div
+          className="container-card"
+          style={{
+            overflow: "auto",
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
+          {incorrectWordsList.map((word, index) => (
+            <CardWords
+              key={index}
+              wordToTranslate={word.frenchWord}
+              wordTranslated={word.englishWord}
+            />
+          ))}
+        </div>
+      ) : null}
 
       <ButtonsResult resetScore={handleGameReset} />
     </div>
