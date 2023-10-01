@@ -8,6 +8,7 @@ import ButtonsResult from "@/components/result/buttonsResult";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/Redux/store";
 import {
+  resetAskedWordsList,
   resetGameScore,
   setBestScore,
   setGameScore,
@@ -45,6 +46,11 @@ export default function Result() {
     localStorage.setItem("gameScore", gameScore.toString());
   }, [gameScore]);
 
+  const handleGameReset = () => {
+    dispatch(resetGameScore());
+    dispatch(resetAskedWordsList());
+  };
+
   return (
     <div
       className="container-card"
@@ -64,7 +70,7 @@ export default function Result() {
         Learn english
       </Label>
       <ScoreResult score={gameScore} bestScore={bestScore} />
-      <ButtonsResult resetScore={() => dispatch(resetGameScore())} />
+      <ButtonsResult resetScore={handleGameReset} />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import theme from "@/constants/Theme";
+import wordsData from "@/constants/WordsList";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -10,40 +11,7 @@ import { useState } from "react";
 import "@/styles/scrollBar.style.css";
 
 export default function Words() {
-  const words = [
-    {
-      frenchWord: "Faire un pari sportif",
-      englishWord: "Place a sports bet 🎲",
-    },
-    {
-      frenchWord: "Déborder",
-      englishWord: "Overflow",
-    },
-    {
-      frenchWord: "Casserole",
-      englishWord: "Saucepan / Pot 🍳",
-    },
-    {
-      frenchWord: "Passoire",
-      englishWord: "Strainer / Colander 🍝",
-    },
-    {
-      frenchWord: "Souffler",
-      englishWord: "Blow 💨",
-    },
-    {
-      frenchWord: "C'est du vol ",
-      englishWord: "It's a rip-off / It's theft 💰",
-    },
-    {
-      frenchWord: "Voisin",
-      englishWord: "Neighbor 👋",
-    },
-    {
-      frenchWord: "Je suis en train de me préparer",
-      englishWord: "I am getting ready 💅",
-    },
-  ];
+  const words = wordsData;
   const [filterOnEnglish, setFilterOnEnglish] = useState(true);
 
   const handleFilter = (tabValue: string) => {

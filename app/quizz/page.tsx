@@ -11,20 +11,26 @@ import ResponseQuizz from "@/components/quizz/responseQuizz";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/Redux/store";
-import { incrementGameScore } from "@/Redux/Features/counter/counterSlice";
+import {
+  incrementGameScore,
+  addWordToAskedWordsList,
+  resetAskedWordsList,
+} from "@/Redux/Features/counter/counterSlice";
+import wordsData from "@/constants/WordsList";
 
 export default function Quizz() {
   const gameScore = useSelector((state: RootState) => state.counter.gameScore);
+  const askedWordsList = useSelector(
+    (state: RootState) => state.counter.askedWordsList
+  );
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
   const [score, setScore] = useState(5);
   const [isConfirm, setIsConfirm] = useState(false);
   const [isCorrect, setIsCorrect] = useState(true);
   const [response, setResponse] = useState("");
-  const [wordToTranslate, setWordToTranslate] = useState(
-    "Faire un pari sportif"
-  );
-  const [wordAnswer, setWordAnswer] = useState("Place a sports bet 🎲");
+  const [wordToTranslate, setWordToTranslate] = useState("");
+  const [wordAnswer, setWordAnswer] = useState("");
 
   const handleConfirm = () => {
     if (response) {
@@ -46,6 +52,7 @@ export default function Quizz() {
     setIsConfirm(false);
     setPage(page + 1);
     setResponse("");
+    handleGenerateWord();
   };
 
   const handleInputChange = (e: {
@@ -57,6 +64,16 @@ export default function Quizz() {
   const handleResponse = () => {
     console.log("User's response:", response);
   };
+
+  const handleGenerateWord = () => {
+    const randomWord = wordsData[Math.floor(Math.random() * wordsData.length)];
+    setWordToTranslate(randomWord.frenchWord);
+    setWordAnswer(randomWord.englishWord);
+  };
+
+  useEffect(() => {
+    handleGenerateWord();
+  }, []);
 
   return (
     <div

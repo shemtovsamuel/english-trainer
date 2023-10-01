@@ -2,6 +2,11 @@ import Link from "next/link";
 import CornerUpLeftIcon from "../icons/cornerUpLeftIcon";
 import { Label } from "../ui/label";
 import theme from "@/constants/Theme";
+import { useDispatch } from "react-redux";
+import {
+  resetAskedWordsList,
+  resetGameScore,
+} from "@/Redux/Features/counter/counterSlice";
 
 interface HeaderQuizzProps {
   style?: React.CSSProperties;
@@ -9,6 +14,13 @@ interface HeaderQuizzProps {
 }
 
 const HeaderQuizz: React.FC<HeaderQuizzProps> = ({ style, score }) => {
+  const dispatch = useDispatch();
+
+  const handleGoBack = () => {
+    dispatch(resetGameScore());
+    dispatch(resetAskedWordsList());
+  };
+
   return (
     <div
       className="container-header"
@@ -21,7 +33,7 @@ const HeaderQuizz: React.FC<HeaderQuizzProps> = ({ style, score }) => {
     >
       <div style={{ display: "flex", flex: 1, justifyContent: "flex-start" }}>
         <Link href="/words">
-          <CornerUpLeftIcon />
+          <CornerUpLeftIcon onClick={handleGoBack} />
         </Link>
       </div>
       <div style={{ display: "flex", justifyContent: "center", flex: 2 }}>

@@ -26,7 +26,7 @@ const ResponseQuizz: React.FC<ResponseQuizzProps> = ({
         display: "flex",
         flexDirection: "column",
         opacity: isDisplay ? 1 : 0,
-        transition: "opacity 0.3s",
+        // transition: "opacity 0.3s",
       }}
     >
       {isCorrect ? (
