@@ -7,7 +7,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { TabsList, TabsTrigger, Tabs } from "@/components/ui/tabs";
 import CardWords from "@/components/words/cardWords";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "@/styles/scrollBar.style.css";
 
 export default function Words() {
@@ -21,6 +21,20 @@ export default function Words() {
       setFilterOnEnglish(false);
     }
   };
+
+  useEffect(() => {
+    const setVH = () => {
+      document.documentElement.style.setProperty(
+        "--vh",
+        `${window.innerHeight * 0.01}px`
+      );
+    };
+
+    setVH();
+    window.addEventListener("resize", setVH);
+
+    return () => window.removeEventListener("resize", setVH);
+  }, []);
 
   return (
     <div
@@ -73,14 +87,16 @@ export default function Words() {
           justifyContent: "center",
         }}
       >
-        {words.map((word) =>
+        {words.map((word, index) =>
           filterOnEnglish ? (
             <CardWords
+              key={index}
               wordToTranslate={word.frenchWord}
               wordTranslated={word.englishWord}
             />
           ) : (
             <CardWords
+              key={index}
               wordToTranslate={word.englishWord}
               wordTranslated={word.frenchWord}
             />
