@@ -11,7 +11,7 @@ export interface CounterState {
 const initialState: CounterState = {
   value: 0,
   gameScore: 0,
-  bestScore: 7,
+  bestScore: 0,
 };
 
 export const counterSlice = createSlice({
@@ -30,6 +30,9 @@ export const counterSlice = createSlice({
     incrementGameScore: (state) => {
       state.gameScore += 1;
     },
+    setGameScore: (state, action) => {
+      state.gameScore = action.payload;
+    },
     setBestScore: (state, action) => {
       state.bestScore = action.payload;
     },
@@ -46,6 +49,7 @@ export const {
   incrementGameScore,
   setBestScore,
   resetGameScore,
+  setGameScore,
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

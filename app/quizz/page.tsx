@@ -31,10 +31,14 @@ export default function Quizz() {
       handleResponse();
       setIsConfirm(true);
       // it it's correct
-      setIsCorrect(true);
-      dispatch(incrementGameScore());
+      if (response === wordAnswer) {
+        setIsCorrect(true);
+        dispatch(incrementGameScore());
+      }
       // if it's incorrect
-      // setIsCorrect(false);
+      else {
+        setIsCorrect(false);
+      }
     }
   };
 
