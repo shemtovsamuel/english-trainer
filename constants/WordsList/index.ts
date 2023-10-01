@@ -229,7 +229,7 @@ const wordsData = [
   },
   {
     frenchWord: "Je suis convaincu",
-    englishWord: "I’m confident 💪",
+    englishWord: "I’m convinced 💪",
   },
   {
     frenchWord: "Au-dessus",

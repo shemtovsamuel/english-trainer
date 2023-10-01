@@ -14,7 +14,6 @@ import { RootState } from "@/Redux/store";
 import {
   incrementGameScore,
   addWordToAskedWordsList,
-  resetAskedWordsList,
 } from "@/Redux/Features/counter/counterSlice";
 import wordsData from "@/constants/WordsList";
 
@@ -66,9 +65,22 @@ export default function Quizz() {
   };
 
   const handleGenerateWord = () => {
-    const randomWord = wordsData[Math.floor(Math.random() * wordsData.length)];
+    const unaskedWords = wordsData.filter(
+      (word) => !askedWordsList.includes(word.frenchWord)
+    );
+
+    if (unaskedWords.length === 0) {
+      console.log("All words have been asked!");
+      return;
+    }
+
+    const randomWord =
+      unaskedWords[Math.floor(Math.random() * unaskedWords.length)];
+
     setWordToTranslate(randomWord.frenchWord);
     setWordAnswer(randomWord.englishWord);
+    dispatch(addWordToAskedWordsList(randomWord.frenchWord));
+    console.log("🏅Asked words list:", askedWordsList);
   };
 
   useEffect(() => {

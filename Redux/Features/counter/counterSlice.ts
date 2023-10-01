@@ -6,14 +6,14 @@ export interface CounterState {
   value: number;
   gameScore: number;
   bestScore: number;
-  askedWorsList: string[];
+  askedWordsList: string[];
 }
 
 const initialState: CounterState = {
   value: 0,
   gameScore: 0,
   bestScore: 0,
-  askedWorsList: [],
+  askedWordsList: [],
 };
 
 export const counterSlice = createSlice({
@@ -42,10 +42,10 @@ export const counterSlice = createSlice({
       state.gameScore = 0;
     },
     addWordToAskedWordsList: (state, action) => {
-      state.askedWorsList.push(action.payload);
+      state.askedWordsList.push(action.payload);
     },
     resetAskedWordsList: (state) => {
-      state.askedWorsList = [];
+      state.askedWordsList = [];
     },
   },
 });

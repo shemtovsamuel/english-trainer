@@ -33,9 +33,7 @@ export default function Result() {
       10
     );
 
-    console.log("Stored gameScore from localStorage:", storedGameScore);
     dispatch(setGameScore(storedGameScore));
-    console.log("After dispatching gameScore:", gameScore);
   }, []);
 
   useEffect(() => {
