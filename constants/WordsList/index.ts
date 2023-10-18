@@ -247,6 +247,106 @@ const wordsData = [
     frenchWord: "Laisser / (Authorization)",
     englishWord: "Let 👍🏼 (Let's = Let us)",
   },
+  {
+    frenchWord: "Serré",
+    englishWord: "Tight 👌🏼",
+  },
+  {
+    frenchWord: "Sorcière / Mégère",
+    englishWord: "Shrew 🧙‍♀️",
+  },
+  {
+    frenchWord: "Comportement",
+    englishWord: "Behaviour 📘",
+  },
+  {
+    frenchWord: "Je Vais Remplir Ma Bouteille",
+    englishWord: "I Fill Up My Bottle 🍶",
+  },
+  {
+    frenchWord: "Fois (Multiplication)",
+    englishWord: "Times ✖️",
+  },
+  {
+    frenchWord: "Aller À La Salle De Sport",
+    englishWord: "Hit The Gym 🏋️‍♂️",
+  },
+  {
+    frenchWord: "Agaçant",
+    englishWord: "Annoying 😤",
+  },
+  {
+    frenchWord: "Sièges",
+    englishWord: "Seats 🪑",
+  },
+  {
+    frenchWord: "Obtenir L'essentiel",
+    englishWord: "Get The Gist 💡",
+  },
+  {
+    frenchWord: "Toujours À La Mode",
+    englishWord: "Still Trendy 🌟",
+  },
+  {
+    frenchWord: "Tu N'auras Pas Besoin",
+    englishWord: "You Won't Need 🚫",
+  },
+  {
+    frenchWord: "Manteau",
+    englishWord: "Coat 🧥",
+  },
+  {
+    frenchWord: "Un Signal / Un Indice / Une Indication",
+    englishWord: "Cue 🚦",
+  },
+  {
+    frenchWord: "L’envie / Désir / Besoin",
+    englishWord: "Craving 🍔",
+  },
+  {
+    frenchWord: "Gênant",
+    englishWord: "Awkward/Embarrassing 🤭",
+  },
+  {
+    frenchWord: "Devine",
+    englishWord: "Guess 💭",
+  },
+  {
+    frenchWord: "J'avais L'habitude De",
+    englishWord: "I Used To 🔙",
+  },
+  {
+    frenchWord: "Je Suis Déçu",
+    englishWord: "I Am Disappointed 😞",
+  },
+  {
+    frenchWord: "Domaine / Terrain",
+    englishWord: "Field 🌾",
+  },
+  {
+    frenchWord: "Déduire",
+    englishWord: "To Deduct",
+  },
+  {
+    frenchWord: "Un Résumé (ex: Résumé D'un Livre)",
+    englishWord: "Summary 📋",
+  },
+  {
+    frenchWord: "Bruit",
+    englishWord: "Noise 🔊",
+  },
+  {
+    frenchWord: "Cauchemar",
+    englishWord: "Nightmare 😱",
+  },
+  {
+    frenchWord: "Je Peux T’assister",
+    englishWord: "I Can Spot You 🤝",
+  },
+  {
+    frenchWord: "Est-ce Que Nous Pouvons Alternée",
+    englishWord: "Can We Take Turns 🔄",
+  },
 ];
 
 export default wordsData;
