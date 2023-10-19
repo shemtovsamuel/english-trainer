@@ -6,12 +6,14 @@ import theme from "@/constants/Theme";
 
 interface QuestionQuizzProps {
   style?: React.CSSProperties;
+  isWordToTranslate?: boolean;
   wordToTranslate: string;
 }
 
 const QuestionQuizz: React.FC<QuestionQuizzProps> = ({
   style,
   wordToTranslate,
+  isWordToTranslate = true,
 }) => {
   return (
     <div
@@ -30,7 +32,8 @@ const QuestionQuizz: React.FC<QuestionQuizzProps> = ({
           fontWeight: "400",
         }}
       >
-        Translate in english the word :
+        Translate in english
+        {isWordToTranslate ? " the word: " : " the sentence: "}
       </Label>
       <Label
         className="label-word-to-translate mt-5"

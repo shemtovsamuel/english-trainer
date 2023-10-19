@@ -103,9 +103,21 @@ export default function Words() {
           )
         )}
       </div>
-      <Link href="/quizz">
-        <Button className="button-start mb-10">Start the test</Button>
-      </Link>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-around",
+          width: "50%",
+        }}
+      >
+        <Link href="/quizz-words">
+          <Button className="button-start mb-10">Words Quizz</Button>
+        </Link>
+        <Link href="/quizz-sentences">
+          <Button className="button-start mb-10">Sentences Quizz</Button>
+        </Link>
+      </div>
     </div>
   );
 }
